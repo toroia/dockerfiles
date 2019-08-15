@@ -26,7 +26,7 @@ RUN apk update \
     && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo "${TIMEZONE}" | tee /etc/timezone
 
-ADD ./rootfs /
+COPY ./rootfs /
 
 RUN rm -rf /tmp/* /var/cache/apk/* \
     && find /var/log -type f | while read f; do echo -n '' > ${f}; done
