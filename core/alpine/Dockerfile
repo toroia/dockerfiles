@@ -18,6 +18,7 @@ RUN apk update \
         bash-completion \
         ca-certificates \
         coreutils \
+        supervisor \
         musl-utils \
         tzdata \
         openssl \
@@ -25,5 +26,9 @@ RUN apk update \
     && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo "${TIMEZONE}" | tee /etc/timezone
 
+ADD ./rootfs /
+
 RUN rm -rf /tmp/* /var/cache/apk/* \
     && find /var/log -type f | while read f; do echo -n '' > ${f}; done
+
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
