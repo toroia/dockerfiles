@@ -3,7 +3,7 @@ FROM alpine:3.9
 LABEL description="Toroia API docker image" \
       maintainer="Toroia Team <contact@toroia.fr>" \
       vendor=Toroia \
-      name="fr.toroia.api.alpine.php"
+      name="fr.toroia.core.alpine"
 
 ENV TIMEZONE=Europe/Paris \
     LANGUAGE=fr_FR.UTF-8 \
