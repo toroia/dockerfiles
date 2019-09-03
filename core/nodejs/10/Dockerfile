@@ -14,5 +14,7 @@ RUN npm install -g \
   --no-optional \
   nodemon
 
+COPY ./rootfs /
+
 RUN rm -rf /tmp/* /var/cache/apk/* \
   && find /var/log -type f | while read f; do echo -n '' > ${f}; done
