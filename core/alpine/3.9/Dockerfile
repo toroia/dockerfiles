@@ -1,6 +1,6 @@
 FROM alpine:3.9
 
-LABEL description="Toroia API docker image" \
+LABEL description="Toroia | Alpine | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
   name="fr.toroia.core.alpine"
@@ -28,7 +28,9 @@ RUN apk update \
 
 COPY ./rootfs /
 
+VOLUME /var/log
+
 RUN rm -rf /tmp/* /var/cache/apk/* \
   && find /var/log -type f | while read f; do echo -n '' > ${f}; done
 
-ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
