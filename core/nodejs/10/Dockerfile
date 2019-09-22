@@ -8,13 +8,16 @@ LABEL description="Toroia | NodeJS | Docker image" \
 RUN apk update \
   && apk add --no-cache \
   nodejs \
-  npm
-
-RUN npm install -g \
-  --no-optional \
-  nodemon
+  yarn \
+  && yarn global add \
+  --non-interactive \
+  nodemon \
+  && curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
 
 COPY ./rootfs /
 
+WORKDIR /app
+
 RUN rm -rf /tmp/* /var/cache/apk/* \
-  && find /var/log -type f | while read f; do echo -n '' > ${f}; done
+  && find /var/log -type f | while read f; do echo -n '' > ${f}; done \
+  && node-clean /usr/share/node_modules

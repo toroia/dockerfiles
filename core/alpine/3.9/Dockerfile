@@ -22,6 +22,7 @@ RUN apk update \
     musl-utils \
     tzdata \
     openssl \
+    curl \
   && update-ca-certificates 2>/dev/null || true \
   && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
   && echo "${TIMEZONE}" | tee /etc/timezone
