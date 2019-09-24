@@ -7,10 +7,15 @@ function generate() {
 while getopts n:d:c: option
 do
   case "${option}" in
-    n) APPNAME=${OPTARG,,};;
+    n) APPNAME=${OPTARG};;
     d) APPDIR=${OPTARG};;
     c) APPCMD=${OPTARG};;
   esac
 done
+
+if test -z "$APPNAME"; then
+  echo "Nom de l'application requis !"
+  exit
+fi
 
 generate ${APPNAME}
