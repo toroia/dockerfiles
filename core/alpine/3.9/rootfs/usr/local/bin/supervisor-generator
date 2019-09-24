@@ -1,0 +1,16 @@
+#!/bin/sh
+
+function generate() {
+  eval $'cat <<\002\n'"$(tr -d '\002' < "/etc/supervisor.d/generator.ini.example")"$'\n\002' > "/etc/supervisor.d/$1.ini"
+}
+
+while getopts n:d:c: option
+do
+  case "${option}" in
+    n) APPNAME=${OPTARG,,};;
+    d) APPDIR=${OPTARG};;
+    c) APPCMD=${OPTARG};;
+  esac
+done
+
+generate ${APPNAME}
