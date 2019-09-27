@@ -1,9 +1,9 @@
-FROM alpine:3.9
+FROM alpine:edge
 
 LABEL description="Toroia | Alpine | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.alpine.3-9"
+  name="fr.toroia.core.alpine.edge"
 
 ENV TIMEZONE=Europe/Paris \
   LANGUAGE=fr_FR.UTF-8 \
@@ -28,6 +28,8 @@ RUN apk update \
   && echo "${TIMEZONE}" | tee /etc/timezone
 
 COPY ./rootfs /
+
+VOLUME /var/log
 
 RUN rm -rf /tmp/* /var/cache/apk/* \
   && find /var/log -type f | while read f; do echo -n '' > ${f}; done

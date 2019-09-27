@@ -1,0 +1,21 @@
+server {
+  listen 80;
+  server_name localhost;
+
+  root /app;
+  index index.html index.php;
+  client_max_body_size 5m;
+  fastcgi_read_timeout 1800;
+
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires       max;
+    log_not_found off;
+    access_log    off;
+  }
+
+  location ~ \.php$ {
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    include fastcgi.conf;
+  }
+}

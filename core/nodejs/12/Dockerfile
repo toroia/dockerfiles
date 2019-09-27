@@ -3,11 +3,11 @@ FROM toroia/alpine:3.10
 LABEL description="Toroia | NodeJS | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.nodejs.10"
+  name="fr.toroia.core.nodejs.12"
 
 RUN apk update \
   && apk add --no-cache \
-  nodejs \
+  nodejs-current \
   yarn \
   && yarn global add \
   --non-interactive \

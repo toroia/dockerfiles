@@ -1,0 +1,21 @@
+[group:$APPNAME]
+programs=${APPNAME}d
+priority=20
+
+[program:${APPNAME}d]
+directory = $APPDIR
+command = $APPCMD
+process_name = %(program_name)s
+numprocs = 1
+user = $APPUSER
+startsecs = 0
+autostart = true
+autorestart = true
+exitcodes = 0
+stopsignal = TERM
+restartsignal = HUP
+reloadsignal = USR2
+stdout_events_enabled = false
+stdout_logfile_maxbytes = 0
+stdout_logfile = /dev/stdout
+redirect_stderr = true
