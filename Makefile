@@ -1,12 +1,20 @@
-docker:
-	docker build -t toroia/alpine:3.9 core/alpine/3.9/
-	docker build -t toroia/alpine:3.10 core/alpine/3.10/
-	docker build -t toroia/alpine:edge core/alpine/edge/
-	docker build -t toroia/nodejs:10 core/nodejs/10/
-	docker build -t toroia/nodejs:12 core/nodejs/12/
-	docker build -t toroia/php-cli:7.3 core/php/cli/7.3/
-	docker build -t toroia/php-fpm:7.3 core/php/fpm/7.3/
-	docker tag toroia/alpine:3.10 toroia/alpine:latest
-	docker tag toroia/nodejs:12 toroia/nodejs:latest
-	docker tag toroia/php-cli:7.3 toroia/php-cli:latest
-	docker tag toroia/php-fpm:7.3 toroia/php-fpm:latest
+.PHONY : docker-core
+
+docker-core:
+	sh ./core/alpine/build.sh
+	sh ./core/nodejs/build.sh
+	sh ./core/php/build.sh
+	sh ./core/phalcon/build.sh
+
+docker-core-alpine:
+	sh ./core/alpine/build.sh
+
+docker-core-nodejs:
+	sh ./core/nodejs/build.sh
+
+docker-core-php:
+	sh ./core/php/build.sh
+
+docker-core-phalcon:
+	sh ./core/phalcon/build.sh
+

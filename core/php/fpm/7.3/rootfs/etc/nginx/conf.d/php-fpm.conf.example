@@ -1,10 +1,10 @@
 server {
   listen 80;
-  server_name localhost;
+  server_name ${SERVER_NAME};
 
-  root /app;
+  root /app${APP_PATH};
   index index.html index.php;
-  client_max_body_size 5m;
+  client_max_body_size ${NGINX_MBSIZE};
   fastcgi_read_timeout 1800;
 
   location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {

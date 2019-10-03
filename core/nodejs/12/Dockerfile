@@ -5,8 +5,7 @@ LABEL description="Toroia | NodeJS | Docker image" \
   vendor=Toroia \
   name="fr.toroia.core.nodejs.12"
 
-RUN apk update \
-  && apk add --no-cache \
+RUN apk add --no-cache \
   nodejs-current \
   yarn \
   && yarn global add \

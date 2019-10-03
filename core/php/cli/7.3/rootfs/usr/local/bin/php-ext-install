@@ -1,0 +1,44 @@
+#!/bin/sh
+
+function buildDeps() {
+apk update \
+  && apk add --no-cache --virtual \
+  .build-deps \
+  autoconf \
+  file \
+  g++ \
+  make \
+  php7-dev \
+  re2c \
+  sudo
+}
+
+function psrExt() {
+wget -c https://github.com/jbboehr/php-psr/archive/v${1}.tar.gz -O - | tar -xz -C /tmp/ \
+  && cd /tmp/php-psr-${1} \
+  && phpize \
+  && ./configure \
+  && make \
+  && make install \
+  && echo "extension=psr.so" > /etc/php7/conf.d/02_psr.ini
+}
+
+function phalconExt() {
+wget -c https://github.com/phalcon/cphalcon/archive/v${1}.tar.gz -O - | tar -xz -C /tmp/ \
+  && cd /tmp/cphalcon-${1}/build \
+  && ./install \
+  && echo "extension=phalcon.so" > /etc/php7/conf.d/03_phalcon.ini
+}
+
+case "$1" in
+"psr")
+    buildDeps()
+    psrExt()
+    ;;
+"2" | "3")
+    do_what_you_are_supposed_to_do()
+    ;;
+*)
+    do_nothing()
+    ;;
+esac

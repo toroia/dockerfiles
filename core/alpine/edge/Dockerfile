@@ -19,6 +19,7 @@ RUN apk update \
     ca-certificates \
     coreutils \
     supervisor \
+    gettext \
     musl-utils \
     tzdata \
     openssl \
@@ -28,8 +29,6 @@ RUN apk update \
   && echo "${TIMEZONE}" | tee /etc/timezone
 
 COPY ./rootfs /
-
-VOLUME /var/log
 
 RUN rm -rf /tmp/* /var/cache/apk/* \
   && find /var/log -type f | while read f; do echo -n '' > ${f}; done

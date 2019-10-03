@@ -19,6 +19,7 @@ RUN apk update \
     ca-certificates \
     coreutils \
     supervisor \
+    gettext \
     musl-utils \
     tzdata \
     openssl \
