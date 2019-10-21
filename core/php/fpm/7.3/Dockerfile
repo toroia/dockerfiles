@@ -5,9 +5,10 @@ LABEL description="Toroia | PHP - FPM | Docker image" \
   vendor=Toroia \
   name="fr.toroia.core.php-fpm.7-3"
 
-ENV SERVER_NAME="localhost" \
-  NGINX_MBSIZE="5m" \
-  APP_PATH="/"
+ENV NGINX_SERVER_NAME="_" \
+  NGINX_ROOT = "/app" \
+  NGINX_CLIENT_MAX_BODY_SIZE="5m" \
+  PHP_MEMORY_LIMIT="128M"
 
 RUN apk update \
   && apk add --no-cache \

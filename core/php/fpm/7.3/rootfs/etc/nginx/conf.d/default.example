@@ -1,0 +1,11 @@
+server {
+  listen 80;
+  server_name ${NGINX_SERVER_NAME};
+
+  root ${NGINX_ROOT};
+  index index.html index.php;
+  client_max_body_size ${NGINX_CLIENT_MAX_BODY_SIZE};
+  fastcgi_read_timeout 1800;
+
+  include custom/${NGINX_SERVER_NAME}.conf
+}
