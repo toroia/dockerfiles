@@ -1,20 +1,21 @@
-.PHONY : docker-core
+.DEFAULT_GOAL := help
+help:
+	@printf "\033[33mUsage:\033[0m\n  make [target] [arg=\"val\"...]\n\n\033[33mTargets:\033[0m\n"
+	@grep -E '^[-a-zA-Z0-9_\.\/]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[32m%-15s\033[0m %s\n", $$1, $$2}'
 
-docker-core:
-	sh ./core/alpine/build.sh
-	sh ./core/nodejs/build.sh
-	sh ./core/php/build.sh
-	sh ./core/phalcon/build.sh
+build: ## Builds Docker images (toroia/*) from Dockerfiles
+	@make -C src/alpine build
+	@make -C src/docker build
+	@make -C src/nodejs build
+	@make -C src/php build
+	@make -C src/zephir build
+	@make -C src/phalcon build
 
-docker-core-alpine:
-	sh ./core/alpine/build.sh
-
-docker-core-nodejs:
-	sh ./core/nodejs/build.sh
-
-docker-core-php:
-	sh ./core/php/build.sh
-
-docker-core-phalcon:
-	sh ./core/phalcon/build.sh
-
+purge: ## Deletes all Docker images (toroia/*) from system
+	@make -C src/alpine purge
+	@make -C src/docker purge
+	@make -C src/nodejs purge
+	@make -C src/php purge
+	@make -C src/zephir purge
+	@make -C src/phalcon purge

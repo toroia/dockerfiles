@@ -1,32 +1,35 @@
 # Dockerfiles
 ## Getting started
 ### Containers list
-You will find below, the list of public containers of the Toroia association:
-- `toroia/alpine`
-- `toroia/nodejs`
-- `toroia/php`
+You will find below, the list of public containers of the Toroia:
+- `toroia/alpine:*`
+- `toroia/docker:*`
+- `toroia/nodejs:*`
+- `toroia/php-cli:*`
+- `toroia/php-fpm:*`
+- `toroia/zephir:*`
+- `toroia/phalcon-cli:*`
+- `toroia/phalcon-fpm:*`
 ## Building
+Building use Makefiles, you can find the Makefiles help by using the following command:
+```bash
+make help
+```
+### How to
 You can build all containers with the Makefile:
 ```bash
 make build
 ```
-### Toroia - Alpine
+Or you can build one image type (example: Alpine) with sub Makefile:
 ```bash
-docker build -t toroia/alpine:3.9 core/alpine/3.9/
-docker build -t toroia/alpine:3.10 core/alpine/3.10/
-docker build -t toroia/alpine:edge core/alpine/edge/
-docker tag toroia/alpine:3.10 toroia/alpine:latest
+make -C src/alpine build
 ```
-### Toroia - NodeJS
+## Purging
+You can purge all containers with the Makefile:
 ```bash
-docker build -t toroia/nodejs:10 core/nodejs/10/
-docker build -t toroia/nodejs:12 core/nodejs/12/
-docker tag toroia/nodejs:12 toroia/nodejs:latest
+make purge
 ```
-### Toroia - PHP
+Or you can purge one image type (example: Alpine) with sub Makefile:
 ```bash
-docker build -t toroia/php-cli:7.3 core/php/cli/7.3/
-docker build -t toroia/php-fpm:7.3 core/php/fpm/7.3/
-docker tag toroia/php-cli:7.3 toroia/php-cli:latest
-docker tag toroia/php-fpm:7.3 toroia/php-fpm:latest
+make -C src/alpine purge
 ```
