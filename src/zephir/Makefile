@@ -5,9 +5,13 @@ help:
 		| sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[32m%-15s\033[0m %s\n", $$1, $$2}'
 
 build: ## Builds Docker images (toroia/zephir:*) from Dockerfiles
-	docker build -t toroia/zephir:7.3 ${CURDIR}/7.3/
-	docker tag toroia/zephir:7.3 toroia/zephir:latest
+	docker build -t toroia/zephir-raw:0.12 ${CURDIR}/raw/0.12/
+	docker build -t toroia/zephir-phalcon:0.12 ${CURDIR}/phalcon/0.12/
+	docker tag toroia/zephir-raw:0.12 toroia/zephir-raw:latest
+	docker tag toroia/zephir-phalcon:0.12 toroia/zephir-phalcon:latest
 
 purge: ## Deletes all Docker images (toroia/zephir:*) from system
-	docker rmi toroia/zephir:7.3
-	docker rmi toroia/zephir:latest
+	docker rmi toroia/zephir-raw:0.12
+	docker rmi toroia/zephir-phalcon:0.12
+	docker rmi toroia/zephir-raw:latest
+	docker rmi toroia/zephir-phalcon:latest

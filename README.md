@@ -1,4 +1,5 @@
 # Dockerfiles
+![Docker Image CI](https://github.com/toroia/dockerfiles/workflows/Docker%20Image%20CI/badge.svg?branch=master)
 ## Getting started
 ### Containers list
 You will find below, the list of public containers of the Toroia:

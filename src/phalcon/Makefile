@@ -5,16 +5,16 @@ help:
 		| sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[32m%-15s\033[0m %s\n", $$1, $$2}'
 
 build: ## Builds Docker images (toroia/phalcon-*) from Dockerfiles
-	docker build -t toroia/phalcon-cli:7.3-4.0 ${CURDIR}/cli/7.3-4.0/
-	docker build -t toroia/phalcon-fpm:7.3-4.0 ${CURDIR}/fpm/7.3-4.0/
-	docker tag toroia/phalcon-cli:7.3-4.0 toroia/phalcon-cli:4.0
-	docker tag toroia/phalcon-fpm:7.3-4.0 toroia/phalcon-fpm:4.0
-	docker tag toroia/phalcon-cli:7.3-4.0 toroia/phalcon-cli:latest
-	docker tag toroia/phalcon-fpm:7.3-4.0 toroia/phalcon-fpm:latest
+	docker build -t toroia/phalcon-cli:4.0 ${CURDIR}/cli/4.0/
+	docker build -t toroia/phalcon-fpm:4.0 ${CURDIR}/fpm/4.0/
+	docker tag toroia/phalcon-cli:4.0 toroia/phalcon-cli:4.0
+	docker tag toroia/phalcon-fpm:4.0 toroia/phalcon-fpm:4.0
+	docker tag toroia/phalcon-cli:4.0 toroia/phalcon-cli:latest
+	docker tag toroia/phalcon-fpm:4.0 toroia/phalcon-fpm:latest
 
 purge: ## Deletes all Docker images (toroia/phalcon-*) from system
-	docker rmi toroia/phalcon-cli:7.3-4.0
-	docker rmi toroia/phalcon-fpm:7.3-4.0
+	docker rmi toroia/phalcon-cli:4.0
+	docker rmi toroia/phalcon-fpm:4.0
 	docker rmi toroia/phalcon-cli:4.0
 	docker rmi toroia/phalcon-fpm:4.0
 	docker rmi toroia/phalcon-cli:latest

@@ -1,9 +1,9 @@
-FROM toroia/alpine:edge
+FROM toroia/alpine:3.9
 
 LABEL description="Toroia | PHP - CLI | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.php-cli.7-3"
+  name="fr.toroia.core.php-cli.7-2"
 
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   PHP_MEMORY_LIMIT="-1" \
@@ -21,8 +21,6 @@ ARG PHAR_SECURITYCHECKER_URL="https://get.sensiolabs.org/security-checker.phar"
 
 RUN apk add --no-cache \
   composer \
-  libsodium-dev \
-  libsodium-static \
   php7 \
   php7-ctype \
   php7-dom \
