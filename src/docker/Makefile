@@ -7,7 +7,9 @@ help:
 build: ## Builds Docker images (toroia/docker:*) from Dockerfiles
 	docker build -t toroia/docker:stable ${CURDIR}/stable/
 	docker build -t toroia/docker:latest ${CURDIR}/latest/
+	docker build -t toroia/docker:19.03.1 ${CURDIR}/19.03.1/
 
 purge: ## Deletes all Docker images (toroia/docker:*) from system
 	docker rmi toroia/docker:stable
 	docker rmi toroia/docker:latest
+	docker rmi toroia/docker:/19.03.1
