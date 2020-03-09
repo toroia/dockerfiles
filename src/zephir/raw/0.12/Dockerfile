@@ -9,17 +9,30 @@ ARG SRC_ZEPPARSER_URL="https://api.github.com/repos/phalcon/php-zephir-parser/re
 ARG PHAR_ZEPTOOLS_URL="https://api.github.com/repos/phalcon/zephir/releases/latest"
 
 RUN apk add --no-cache \
-  php7-pecl-psr \
   autoconf \
   automake \
   file \
   g++ \
   make \
   jq \
+  php7-pear \
   php7-dev \
+  php7-intl \
+  php7-sqlite3 \
+  php7-pdo_sqlite \
+  php7-pecl-redis \
+  php7-pecl-imagick \
+  php7-pecl-msgpack \
+  php7-pecl-igbinary \
   re2c \
   libpcre32 \
   sudo
+
+RUN pecl install psr-0.7.0 && \
+  echo "extension=psr.so" >> /etc/php7/conf.d/20_psr.ini
+
+RUN pecl install mongodb && \
+  echo "extension=mongodb.so" >> /etc/php7/conf.d/40_mongodb.ini
 
 RUN curl -sL ${SRC_ZEPPARSER_URL} | jq -r '.tarball_url' | \
   xargs wget -O - | tar -xz -C /tmp/ \

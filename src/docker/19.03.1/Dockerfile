@@ -1,9 +1,9 @@
-FROM docker:latest
+FROM docker:19.03.1
 
 LABEL description="Toroia | Docker | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.docker.latest"
+  name="fr.toroia.core.docker.19-03-1"
 
 ENV DOCKER_HOST="tcp://docker:2375" \
   DOCKER_TLS_CERTDIR=""

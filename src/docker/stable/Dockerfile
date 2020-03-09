@@ -5,6 +5,9 @@ LABEL description="Toroia | Docker | Docker image" \
   vendor=Toroia \
   name="fr.toroia.core.docker.stable"
 
+ENV DOCKER_HOST="tcp://docker:2375" \
+  DOCKER_TLS_CERTDIR=""
+
 RUN apk update \
   && apk upgrade --force \
   && apk add --no-cache \

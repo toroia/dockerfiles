@@ -33,6 +33,7 @@ RUN apk add --no-cache \
   php7-session \
   php7-opcache \
   php7-pdo \
+  php7-curl \
   php7-simplexml \
   php7-sodium \
   php7-tokenizer \
