@@ -1,12 +1,12 @@
-FROM toroia/alpine:3.12
+FROM toroia/alpine:edge
 
 LABEL description="Toroia | NodeJS | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.nodejs.12"
+  name="fr.toroia.core.nodejs.14"
 
 RUN apk add --no-cache \
-  nodejs \
+  nodejs-current \
   yarn \
   && yarn global add \
   --non-interactive \

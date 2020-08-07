@@ -1,9 +1,9 @@
-FROM alpine:3.9
+FROM alpine:3.12
 
 LABEL description="Toroia | Alpine | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.alpine.3-9"
+  name="fr.toroia.core.alpine.3-12"
 
 ENV SUPERVISORD_LOGLEVEL=warn \
   TIMEZONE=Europe/Paris \

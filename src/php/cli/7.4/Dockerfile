@@ -1,9 +1,9 @@
-FROM toroia/alpine:3.12
+FROM toroia/alpine:edge
 
 LABEL description="Toroia | PHP - CLI | Docker image" \
   maintainer="Toroia Team <contact@toroia.fr>" \
   vendor=Toroia \
-  name="fr.toroia.core.php-cli.7-3"
+  name="fr.toroia.core.php-cli.7-4"
 
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   PHP_MEMORY_LIMIT="-1" \

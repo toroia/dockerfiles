@@ -7,9 +7,16 @@ help:
 build: ## Builds Docker images (toroia/nodejs:*) from Dockerfiles
 	docker build -t toroia/nodejs:10 ${CURDIR}/10/
 	docker build -t toroia/nodejs:12 ${CURDIR}/12/
-	docker tag toroia/nodejs:12 toroia/nodejs:latest
+	docker build -t toroia/nodejs:14 ${CURDIR}/14/
+	docker tag toroia/nodejs:14 toroia/nodejs:latest
+
+check: ## Check Docker image version (toroia/nodejs:*)
+	docker run -it --rm toroia/nodejs:10 node -v | grep "v10.*"
+	docker run -it --rm toroia/nodejs:12 node -v | grep "v12.*"
+	docker run -it --rm toroia/nodejs:14 node -v | grep "v14.*"
 
 purge: ## Deletes all Docker images (toroia/nodejs:*) from system
 	docker rmi toroia/nodejs:10
 	docker rmi toroia/nodejs:12
+	docker rmi toroia/nodejs:14
 	docker rmi toroia/nodejs:latest

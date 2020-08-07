@@ -1,0 +1,6 @@
+#!/bin/sh
+
+COMPOSER_LOCK_PATH="/app/composer.lock"
+if test -f "$COMPOSER_LOCK_PATH"; then
+  security-checker security:check ${COMPOSER_LOCK_PATH} 2>&-
+fi

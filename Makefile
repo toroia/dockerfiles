@@ -12,6 +12,11 @@ build: ## Builds Docker images (toroia/*) from Dockerfiles
 	@make -C src/zephir build
 	@make -C src/phalcon build
 
+check: ## Check Docker builds (toroia/*)
+	@make -C src/alpine check
+	@make -C src/nodejs check
+	@make -C src/php check
+
 purge: ## Deletes all Docker images (toroia/*) from system
 	@make -C src/alpine purge
 	@make -C src/docker purge

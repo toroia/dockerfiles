@@ -4,6 +4,7 @@
 You will find below, the list of public containers of the Toroia - Alpine:
 - `toroia/alpine:3.9`
 - `toroia/alpine:3.10`
+- `toroia/alpine:3.12`
 - `toroia/alpine:edge`
 - `toroia/alpine:latest`
 ## Building

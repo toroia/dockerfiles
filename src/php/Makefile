@@ -7,15 +7,24 @@ help:
 build: ## Builds Docker images (toroia/php-*) from Dockerfiles
 	docker build -t toroia/php-cli:7.2 ${CURDIR}/cli/7.2/
 	docker build -t toroia/php-cli:7.3 ${CURDIR}/cli/7.3/
+	docker build -t toroia/php-cli:7.4 ${CURDIR}/cli/7.4/
 	docker build -t toroia/php-fpm:7.2 ${CURDIR}/fpm/7.2/
 	docker build -t toroia/php-fpm:7.3 ${CURDIR}/fpm/7.3/
-	docker tag toroia/php-cli:7.3 toroia/php-cli:latest
-	docker tag toroia/php-fpm:7.3 toroia/php-fpm:latest
+	docker build -t toroia/php-fpm:7.4 ${CURDIR}/fpm/7.4/
+	docker tag toroia/php-cli:7.4 toroia/php-cli:latest
+	docker tag toroia/php-fpm:7.4 toroia/php-fpm:latest
+
+check: ## Check Docker image version (toroia/php-*)
+	docker run -it --rm toroia/php-cli:7.2 php -v | grep "PHP 7.2.*"
+	docker run -it --rm toroia/php-cli:7.3 php -v | grep "PHP 7.3.*"
+	docker run -it --rm toroia/php-cli:7.4 php -v | grep "PHP 7.4.*"
 
 purge: ## Deletes all Docker images (toroia/php-*) from system
 	docker rmi toroia/php-cli:7.2
 	docker rmi toroia/php-cli:7.3
+	docker rmi toroia/php-cli:7.4
 	docker rmi toroia/php-fpm:7.2
 	docker rmi toroia/php-fpm:7.3
+	docker rmi toroia/php-fpm:7.4
 	docker rmi toroia/php-cli:latest
 	docker rmi toroia/php-fpm:latest
